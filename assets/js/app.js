@@ -1,10 +1,28 @@
 $(document).ready(function () {
-  const singer = "beyonce";
+  let singer = "beyonce";
   const limit = 30;
-  const url = `https://itunes.apple.com/search?term=${singer}&limit=${limit}`;
+  //   const url = ``;
 
+  $("form").on("submit", function (e) {
+    e.preventDefault();
+
+    $(".container").empty();
+
+    const searchValue = $("#search").val();
+    singer = searchValue;
+
+    // fetch the results
+    fetchData();
+
+    // clear the form input
+    $("#search").val("");
+  });
+
+  // fetch results function
   const fetchData = async function () {
-    let result = await fetch(url);
+    let result = await fetch(
+      `https://itunes.apple.com/search?term=${singer}&limit=${limit}`
+    );
     result = await result.json();
     result = result.results;
 
@@ -22,6 +40,4 @@ $(document).ready(function () {
       `);
     });
   };
-
-  fetchData();
 });
