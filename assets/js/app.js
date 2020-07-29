@@ -11,7 +11,15 @@ $(document).ready(function () {
     console.log(result);
 
     result.forEach((each) => {
-      const { artistName, artworkUrl100, previewUrl } = { ...each };
+      const { artistName, artworkUrl100, previewUrl, trackName } = { ...each };
+      $(".container").append(`
+        <div class="box">
+            <img src=${artworkUrl100} alt=${artworkUrl100} />
+            <span class="singer">${artistName}</span>
+            <span class="song">${trackName}</span>
+            <audio src=${previewUrl} controls></audio>
+        </div>
+      `);
     });
   };
 

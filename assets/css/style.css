@@ -51,7 +51,11 @@ input[type="text"] {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 20px 0;
+  margin: 20px;
+  padding: 20px;
+  background-color: rgba(200, 200, 200, 0.1);
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
 }
 
 .box img {
@@ -69,15 +73,24 @@ input[type="text"] {
   font-weight: bold;
 }
 
-@media (max-width: 930px) {
+@media (max-width: 1150px) {
   .container {
     grid-template-columns: 1fr 1fr;
     justify-content: center;
   }
 }
 
-@media (max-width: 630px) {
+@media (max-width: 750px) {
   .container {
     grid-template-columns: 1fr;
+  }
+
+  .search {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .search label {
+    margin-bottom: 20px;
   }
 }
