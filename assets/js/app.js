@@ -1,7 +1,6 @@
 $(document).ready(function () {
   let singer = "beyonce";
   const limit = 30;
-  //   const url = ``;
 
   $("form").on("submit", function (e) {
     e.preventDefault();
@@ -9,6 +8,9 @@ $(document).ready(function () {
     $(".container").empty();
 
     const searchValue = $("#search").val();
+
+    if (!searchValue) alert("Please enter Atrist name");
+
     singer = searchValue;
 
     // fetch the results
