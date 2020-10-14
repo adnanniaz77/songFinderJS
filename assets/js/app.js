@@ -20,6 +20,12 @@ $(document).ready(function () {
     $("#search").val("");
   });
 
+  // prevent other audio from playing
+  $(document).on("play", (e) => {
+    const allAudio = $("audio");
+    console.log(e.target);
+  });
+
   // fetch results function
   const fetchData = async function () {
     let result = await fetch(
