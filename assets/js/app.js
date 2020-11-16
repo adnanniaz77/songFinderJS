@@ -56,8 +56,8 @@ $(document).ready(function () {
               <img src=${artworkUrl100} alt=${artworkUrl100} />
               <span class="singer">${artistName}</span>
               <span class="song">${trackName}</span>
-              <span class="song">${collectionName}</span>
-              <!-- <audio src=${previewUrl} controls></audio> -->
+              <!-- <span class="song">${collectionName}</span> -->
+              <audio src=${previewUrl} controls></audio> 
           </div>
         </div>
       `);
