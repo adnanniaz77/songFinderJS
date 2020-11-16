@@ -23,12 +23,6 @@ $(document).ready(function () {
     $("#search").val("");
   });
 
-  // prevent other audio from playing
-  $(document).on("play", (e) => {
-    const allAudio = $("audio");
-    console.log(e.target);
-  });
-
   // fetch results function
   const fetchData = async function () {
     let result = await fetch(
@@ -48,6 +42,14 @@ $(document).ready(function () {
         collectionName 
       } = { ...res };
       $(".container").append(`
+<<<<<<< HEAD
+        <div class="box">
+            <img src=${artworkUrl100} alt=${artworkUrl100} />
+            <span class="singer">${artistName}</span>
+            <span class="song">${trackName}</span>
+            <audio src=${previewUrl} controls onpause="pauseScript()" 
+              onplaying="myScript()"></audio>
+=======
         <div class="track-link" data-preview=${previewUrl} 
                                 data-artist=${artistName} 
                                 data-trackName=${trackName} 
@@ -59,6 +61,7 @@ $(document).ready(function () {
               <!-- <span class="song">${collectionName}</span> -->
               <audio src=${previewUrl} controls></audio> 
           </div>
+>>>>>>> 64394136455353d69e24d0ec376770d7a78f7881
         </div>
       `);
     });
@@ -83,3 +86,16 @@ $(document).ready(function () {
     $('#audio').attr('src', current.preview)
   });
 });
+
+function myScript() {
+  const img = document.querySelector(`.box img`)
+  // console.log(img[0])
+
+  img.classList.add('animate')
+  const tt = img.parentNode[2];
+  console.log(tt)
+}
+
+function pauseScript() {
+  document.querySelector('.box img').classList.remove('animate')
+}
