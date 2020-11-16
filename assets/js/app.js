@@ -20,12 +20,6 @@ $(document).ready(function () {
     $("#search").val("");
   });
 
-  // prevent other audio from playing
-  $(document).on("play", (e) => {
-    const allAudio = $("audio");
-    console.log(e.target);
-  });
-
   // fetch results function
   const fetchData = async function () {
     let result = await fetch(
@@ -43,9 +37,23 @@ $(document).ready(function () {
             <img src=${artworkUrl100} alt=${artworkUrl100} />
             <span class="singer">${artistName}</span>
             <span class="song">${trackName}</span>
-            <audio src=${previewUrl} controls></audio>
+            <audio src=${previewUrl} controls onpause="pauseScript()" 
+              onplaying="myScript()"></audio>
         </div>
       `);
     });
   };
 });
+
+function myScript() {
+  const img = document.querySelector(`.box img`)
+  // console.log(img[0])
+
+  img.classList.add('animate')
+  const tt = img.parentNode[2];
+  console.log(tt)
+}
+
+function pauseScript() {
+  document.querySelector('.box img').classList.remove('animate')
+}
