@@ -9,9 +9,16 @@
     <title>Document</title>
 </head>
 
-<body>
+<body class="body">
     <header>
-        <div class="title">Song Finder <span></span></div>
+        <section>
+            <div class="title">Song Finder</div>
+            <ul id="themeOption">
+                <li data-themename="winter"></li>
+                <li data-themename="night"></li>
+                <li data-themename="sunset"></li>
+            </ul>
+        </section>
         <div class="search">
             <!-- <label>Search you Favorite Artist: </label> -->
             <form>
@@ -27,7 +34,7 @@
             <div class="player">
                 <!-- song info -->
                 <div class="section song_info">
-                    <!-- <span class="album">Album</span> -->
+                    <button class="closeBtn">✖</button>
                     <span class="songName">Song</span>
                     <span class="artist">Artist</span>
                 </div>

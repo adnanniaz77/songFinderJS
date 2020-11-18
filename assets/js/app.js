@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    let singer = "beyonce";
+
     const limit = 30;
   
     $("form").on("submit", function (e) {
@@ -55,6 +55,12 @@ $(document).ready(function () {
     };
   });
 
+  const themeOptions = [
+    {themeName: 'winter', bgImg: '../assets/images/winter_snowy.svg', bgColor: '#4d87b0'},
+    {themeName: 'night', bgImg: '../assets/images/pondNightsky.svg', bgColor: '#29495e'},
+    {themeName: 'sunset', bgImg: '../assets/images/pondSunset.svg', bgColor: '#141c3a'}
+  ]
+
 // click event to display player and play audio
 
   $(document).on('click', '.track-link', function () {
@@ -92,10 +98,55 @@ function handlePause() {
 
 //////////////////////
 document.addEventListener('click', (e) => {
-  console.log(e.target)
-
   if (e.target === document.body) {
     document.querySelector('.player').style.display = 'none'
     document.querySelector('.container').style.display = 'block'
   }
+})
+
+const themeOption = document.querySelector('#themeOption')
+const firstThemeBtn = document.querySelector('#themeOption li:nth-child(1)')
+const secondThemeBtn = document.querySelector('#themeOption li:nth-child(2)')
+const lastThemeBtn = document.querySelector('#themeOption li:nth-child(3)')
+
+// firstThemeBtn
+  themeOption.addEventListener('mouseover', () => { 
+  firstThemeBtn.style.transform = "translateY(-10px)"
+  lastThemeBtn.style.transform = "translateY(10px)"
+  
+})
+
+themeOption.addEventListener('mouseleave', () => { 
+  firstThemeBtn.style.transform = "translateY(30px)"
+  lastThemeBtn.style.transform = "translateY(-30px)"
+})
+
+/// click on each theme button
+const allThemeBtns = document.querySelectorAll('#themeOption li')
+const docBody = document.querySelector('.body')
+
+
+
+allThemeBtns.forEach(themeBtn => {
+  themeBtn.addEventListener('click', (e) => {
+    if (e.target.dataset.themename === 'winter') {
+      docBody.style.backgroundColor = `#29495e`
+      docBody.style.backgroundImage = `url('${themeOptions[0].bgImg}')`
+    } 
+    else if (e.target.dataset.themename === 'night') {
+      docBody.style.backgroundColor = `#091a3e`
+      docBody.style.backgroundImage = `url('${themeOptions[1].bgImg}')`
+    }
+    else if (e.target.dataset.themename === 'sunset') {
+      docBody.style.backgroundColor = `#692016`
+      docBody.style.backgroundImage = `url('${themeOptions[2].bgImg}')`
+    }
+  })
+})
+
+const closeBtn = document.querySelector('.closeBtn');
+console.log(closeBtn)
+closeBtn.addEventListener('click', () => {
+    document.querySelector('.player').style.display = 'none'
+    document.querySelector('.container').style.display = 'block'
 })
