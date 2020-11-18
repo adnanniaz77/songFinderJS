@@ -44,7 +44,7 @@ $(document).ready(function () {
                         this.dataset.previewurl, 
                         this.dataset.trackname            
                       )">
-              <img src=${artworkUrl100} alt=${artworkUrl100}" />
+              <!--<img src=${artworkUrl100} alt=${artworkUrl100}" />-->
               <span class="singer">${artistName}</span>
               <span class="song">${trackName}</span>
               <!--<audio src=${previewUrl} controls onpause="pauseScript()" 
@@ -53,6 +53,14 @@ $(document).ready(function () {
         `);
       });
     };
+  });
+
+// click event to display player and play audio
+
+  $(document).on('click', '.track-link', function () {
+    current["preview"] = $(this).data('preview');
+    current["artist"] = $(this).data('artist');
+    current["poster"] = $(this).data('poster');
   });
   
 
@@ -63,6 +71,10 @@ const disc = document.querySelector('.disc')
 const audioSrc = document.querySelector('.audioSrc')
 
 function playThis(artistname, artworkurl100, previewurl, trackname) {
+  
+  document.querySelector('.player').style.display = 'block'
+  document.querySelector('.container').style.display = 'none'
+
   artist.textContent = artistname 
   songName.textContent = trackname 
   disc.setAttribute('src', artworkurl100)
@@ -77,3 +89,13 @@ function handlePlaying() {
 function handlePause() {
   disc.classList.remove('animate')
 }
+
+//////////////////////
+document.addEventListener('click', (e) => {
+  console.log(e.target)
+
+  if (e.target === document.body) {
+    document.querySelector('.player').style.display = 'none'
+    document.querySelector('.container').style.display = 'block'
+  }
+})
