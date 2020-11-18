@@ -122,7 +122,7 @@ audio:focus {
 }
 
 .animate {
-    animation: animate linear 3s infinite;
+    animation: animate linear 10s infinite;
 }
 
 @keyframes animate {
