@@ -1,73 +1,71 @@
-$(document).ready(function () {
 
-    const limit = 30;
-  
-    $("form").on("submit", function (e) {
-      e.preventDefault();
-  
-      $(".container").empty();
-  
-      const searchValue = $("#search").val();
-  
-      if (!searchValue) alert("Please enter Atrist name");
-  
-      singer = searchValue;
-  
-      // fetch the results
-      fetchData();
-  
-      // clear the form input
-      $("#search").val("");
-    });
-  
-    // fetch results function
-    const fetchData = async function () {
-      let result = await fetch(
-        `https://itunes.apple.com/search?term=${singer}&limit=${limit}`
-      );
-      result = await result.json();
-      result = result.results;
-  
-      console.log(result);
-  
-      result.forEach((each) => {
-        const { artistName, artworkUrl100, previewUrl, trackName } = { ...each };
-        $(".container").append(`
-          <div class="box"
-                    data-artistName=${artistName} 
-                    data-trackName=${trackName}
-                    data-artworkUrl100=${artworkUrl100}
-                    data-previewUrl=${previewUrl}
-                    onclick="playThis(
-                        this.dataset.artistname, 
-                        this.dataset.artworkurl100, 
-                        this.dataset.previewurl, 
-                        this.dataset.trackname            
-                      )">
-              <!--<img src=${artworkUrl100} alt=${artworkUrl100}" />-->
-              <span class="singer">${artistName}</span>
-              <span class="song">${trackName}</span>
-              <!--<audio src=${previewUrl} controls onpause="pauseScript()" 
-                onplaying="myScript()"></audio>-->
-          </div>
-        `);
-      });
-    };
+const limit = 30;
+
+$("form").on("submit", function (e) {
+  e.preventDefault();
+
+  $(".container").empty();
+
+  const searchValue = $("#search").val();
+
+  if (!searchValue) alert("Please enter Atrist name");
+
+  singer = searchValue;
+
+  // fetch the results
+  fetchData();
+
+  // clear the form input
+  $("#search").val("");
+});
+
+// fetch results function
+const fetchData = async function () {
+  let result = await fetch(
+    `https://itunes.apple.com/search?term=${singer}&limit=${limit}`
+  );
+  result = await result.json();
+  result = result.results;
+
+  console.log(result);
+
+  result.forEach((each) => {
+    const { artistName, artworkUrl100, previewUrl, trackName } = { ...each };
+    $(".container").append(`
+      <div class="box"
+                data-artistName=${artistName} 
+                data-trackName=${trackName}
+                data-artworkUrl100=${artworkUrl100}
+                data-previewUrl=${previewUrl}
+                onclick="playThis(
+                    this.dataset.artistname, 
+                    this.dataset.artworkurl100, 
+                    this.dataset.previewurl, 
+                    this.dataset.trackname            
+                  )">
+          <!--<img src=${artworkUrl100} alt=${artworkUrl100}" />-->
+          <span class="singer">${artistName}</span>
+          <span class="song">${trackName}</span>
+          <!--<audio src=${previewUrl} controls onpause="pauseScript()" 
+            onplaying="myScript()"></audio>-->
+      </div>
+    `);
   });
+};
 
-  const themeOptions = [
-    {themeName: 'winter', bgImg: '../assets/images/winter_snowy.svg', bgColor: '#4d87b0'},
-    {themeName: 'night', bgImg: '../assets/images/pondNightsky.svg', bgColor: '#29495e'},
-    {themeName: 'sunset', bgImg: '../assets/images/pondSunset.svg', bgColor: '#141c3a'}
-  ]
+const themeOptions = [
+  {themeName: 'winter', bgImg: '../assets/images/winter_snowy.svg', bgColor: '#4d87b0'},
+  {themeName: 'night', bgImg: '../assets/images/pondNightsky.svg', bgColor: '#29495e'},
+  {themeName: 'sunset', bgImg: '../assets/images/pondSunset.svg', bgColor: '#141c3a'}
+]
 
 // click event to display player and play audio
 
-  $(document).on('click', '.track-link', function () {
-    current["preview"] = $(this).data('preview');
-    current["artist"] = $(this).data('artist');
-    current["poster"] = $(this).data('poster');
-  });
+$(document).on('click', '.track-link', function () {
+  current["preview"] = $(this).data('preview');
+  current["artist"] = $(this).data('artist');
+  current["poster"] = $(this).data('poster');
+});
   
 
 const player = document.querySelector('.player')
