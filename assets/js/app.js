@@ -96,7 +96,7 @@ function handlePause() {
   disc.classList.remove('animate')
 }
 
-//////////////////////
+///////////////////////////////////////////
 document.addEventListener('click', (e) => {
   if (e.target === document.body) {
     document.querySelector('.player').style.display = 'none'
@@ -125,8 +125,6 @@ themeOption.addEventListener('mouseleave', () => {
 const allThemeBtns = document.querySelectorAll('#themeOption li')
 const docBody = document.querySelector('.body')
 
-
-
 allThemeBtns.forEach(themeBtn => {
   themeBtn.addEventListener('click', (e) => {
     if (e.target.dataset.themename === 'winter') {
@@ -144,9 +142,11 @@ allThemeBtns.forEach(themeBtn => {
   })
 })
 
+//////////////////////////////////////////////////////
 const closeBtn = document.querySelector('.closeBtn');
-console.log(closeBtn)
+
 closeBtn.addEventListener('click', () => {
-    document.querySelector('.player').style.display = 'none'
-    document.querySelector('.container').style.display = 'block'
+  handlePause();
+  document.querySelector('.player').style.display = 'none'
+  document.querySelector('.container').style.display = 'block'
 })

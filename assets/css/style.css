@@ -169,7 +169,8 @@ audio:focus {
     list-style: none;
     top: 60px;
     right: 10px;
-    cursor: pointer
+    cursor: pointer;
+    z-index: 1;
 }
 
 #themeOption li {
@@ -177,6 +178,11 @@ audio:focus {
     height: 30px;
     border-radius: 50%;
     transition: transform ease .2s;
+}
+
+#themeOption li:hover {
+    outline: none;
+    border: none;
 }
 
 #themeOption li:nth-child(1) {
