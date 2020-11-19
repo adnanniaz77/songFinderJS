@@ -13,9 +13,10 @@
     background-color: #29495e;
     background-image: url('../images/winter_snowy.svg');
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: contain;
     color: #ffffff;
     transition: background ease 1s;
+    background-attachment: fixed;
 }
 
 header {
@@ -84,8 +85,7 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 5px;
-    width: 100%;
+    margin: 5px 15px;
     background-color: rgba(252, 252, 252, 0.1);
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.281);
     border-radius: 5px;
@@ -95,7 +95,7 @@ main {
 }
 
 .box:hover {
-    transform: scale(1.05);
+    transform: scale(1.02);
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.404);
 }
 

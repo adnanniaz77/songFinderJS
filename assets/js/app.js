@@ -54,9 +54,9 @@ const fetchData = async function () {
 };
 
 const themeOptions = [
-  {themeName: 'winter', bgImg: '../assets/images/winter_snowy.svg', bgColor: '#4d87b0'},
-  {themeName: 'night', bgImg: '../assets/images/pondNightsky.svg', bgColor: '#29495e'},
-  {themeName: 'sunset', bgImg: '../assets/images/pondSunset.svg', bgColor: '#141c3a'}
+  {themeName: 'winter', bgImg: 'assets/images/winter_snowy.svg', bgColor: '#4d87b0'},
+  {themeName: 'night', bgImg: 'assets/images/pondNightsky.svg', bgColor: '#29495e'},
+  {themeName: 'sunset', bgImg: 'assets/images/pondSunset.svg', bgColor: '#141c3a'}
 ]
 
 // click event to display player and play audio
